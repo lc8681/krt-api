@@ -4,7 +4,7 @@ import os
 import csv
 import pandas as pda
 
-csv_title = ['Personnel_category', 'employee_number', 'employee_status', 'name', 'ID_number', 'birth_date', 'age',
+csv_title = ['Personnel_category', 'job_number', 'employee_status', 'name', 'ID_number', 'birth_date', 'age',
              'ethnicity', 'gender', 'political_outlook', 'birthplace', 'marital_status', 'internship_category',
              'source_classification', 'department', 'department_full_name', 'entry_date', 'age_of_the_company_',
              'Working_time', 'length_of_service', 'job_sequence', 'job_hours', 'labor_contract_company',

@@ -12,7 +12,7 @@ def sql_connect():
     conn = sqlite3.connect(sqlite_path)
     conn.execute('drop table staff_info')
     df = pandas.read_csv(csv_path)
-    df.to_sql(table_name, conn, if_exists='append', index=True)
+    df.to_sql(table_name, conn, if_exists='append', index=False)
     print('ok')
 
 
