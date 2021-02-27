@@ -25,13 +25,13 @@ def search_users():
     mobile_phone_number = request.values.get("mobile_phone_number")
     conn = sqlite3.connect(sqlite_path)
     cur = conn.cursor()
-    if name is not None:
+    if name != '':
         sql = "select * from staff_info where name=('%s')" % name
-    elif job_number is not None:
+    elif job_number != '':
         sql = "select * from staff_info where job_number=" + job_number
-    elif ID_number is not None:
+    elif ID_number != '':
         sql = "select * from staff_info where ID_number=" + ID_number
-    elif mobile_phone_number is not None:
+    elif mobile_phone_number != '':
         sql = 'select * from staff_info where mobile_phone_number=' + mobile_phone_number
     cur.execute(sql)
     result = cur.fetchall()
