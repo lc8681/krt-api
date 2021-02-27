@@ -15,8 +15,6 @@ title = ["人员类别", "员工编号", "人员状态", "姓名", "身份证号
          "加班预存标识", "加班小时上限", "综合工时预存上限", "离职类别", "离职原因", "最后工作日", "提前转正期限（月）", "异动类型", "试用期开始日期", "产假开始日期", "产假结束日期",
          "实习转试用日期", "试用期期限（月）", "转正时间", "变动前原职级", "异动日期", "板块名称", "二级部门", "三级部门", "四级部门", "产假应休天数", "已休年假", "哺乳补贴基数",
          "司龄（月）", "原部门", "原岗位名称", "兼任信息", "招聘来源", "招聘类型"]
-new_result = []
-
 
 @app.route('/search/users', methods=["GET"])
 def search_users():
@@ -37,6 +35,7 @@ def search_users():
         sql = 'select * from staff_info where mobile_phone_number=' + mobile_phone_number
     cur.execute(sql)
     result = cur.fetchall()
+    new_result = []
     for i in result:
         # print(list(i))
         dict_result = dict(zip(title, list(i)))
