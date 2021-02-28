@@ -1,6 +1,8 @@
+# coding:utf-8
 from flask import Flask, jsonify
 from flask import request
 import sqlite3
+from excel_check.scan_excel import scan_execl
 
 app = Flask(__name__)
 
@@ -16,6 +18,7 @@ title = ["人员类别", "员工编号", "人员状态", "姓名", "身份证号
          "实习转试用日期", "试用期期限（月）", "转正时间", "变动前原职级", "异动日期", "板块名称", "二级部门", "三级部门", "四级部门", "产假应休天数", "已休年假", "哺乳补贴基数",
          "司龄（月）", "原部门", "原岗位名称", "兼任信息", "招聘来源", "招聘类型"]
 
+
 @app.route('/search/users', methods=["GET"])
 def search_users():
     global sql
@@ -26,7 +29,7 @@ def search_users():
     conn = sqlite3.connect(sqlite_path)
     cur = conn.cursor()
     if name != '':
-        sql = "select * from staff_info where name=('%s')" % name
+        sql = "select * from staff_info where name like ('%s')" % name
     elif job_number != '':
         sql = "select * from staff_info where job_number=" + job_number
     elif ID_number != '':
@@ -43,6 +46,12 @@ def search_users():
         new_result.append(dict_result)
     conn.close()
     return jsonify({"code": "00", "data": new_result, "msg": "success"})
+
+
+@app.route('/scanExcel', methods=["GET"])
+def scan_excel():
+    scan_execl()
+    return 'ok'
 
 
 if __name__ == '__main__':

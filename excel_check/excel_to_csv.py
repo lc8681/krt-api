@@ -34,11 +34,15 @@ csv_title = ['Personnel_category', 'job_number', 'employee_status', 'name', 'ID_
              'third_level_department', 'fourth_level_department', 'number_of_days_to_take_maternity_leave',
              'closed_Annual_leave', 'breastfeeding_subsidy_base', 'company_age_months', 'original_department',
              'original_job_title', 'part_time_information', 'recruitment_source', 'recruitment_type']
-excel_path = 'huamingce.xls'
-csv_path = 'huamingce.csv'
+excel_path = 'excel_check/huamingce.xls'
+csv_path = 'excel_check/huamingce.csv'
 
 
 def excel_to_csv():
+    try:
+        os.remove(csv_path)
+    except:
+        pass
     with open(csv_path, 'a+', newline='', encoding='utf_8_sig')as f:
         f_csv = csv.writer(f, dialect='excel')
         f_csv.writerow(csv_title)
@@ -47,8 +51,4 @@ def excel_to_csv():
 
 
 if __name__ == '__main__':
-    try:
-        os.remove(csv_path)
-    except:
-        pass
     excel_to_csv()

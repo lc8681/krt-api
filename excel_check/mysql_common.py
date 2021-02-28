@@ -3,8 +3,8 @@
 import pandas
 import sqlite3
 
-csv_path = 'huamingce.csv'
-sqlite_path = 'sqlite'
+csv_path = 'excel_check/huamingce.csv'
+sqlite_path = 'excel_check/sqlite'
 
 
 def sql_connect():
