@@ -29,7 +29,7 @@ def search_users():
     conn = sqlite3.connect(sqlite_path)
     cur = conn.cursor()
     if name != '':
-        sql = "select * from staff_info where name like ('%s')" % name
+        sql = "select * from staff_info where name like ('%s')" % ('%' + name)
     elif job_number != '':
         sql = "select * from staff_info where job_number=" + job_number
     elif ID_number != '':
